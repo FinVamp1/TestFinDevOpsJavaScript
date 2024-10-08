@@ -34,6 +34,10 @@ jobs:
           npm run test --if-present
           popd
 
+      - name: Deploy to WebApp
+        id: deploy-to-webapp
+        run: echo "::set-output name=webapp-url::https://example.com"
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
