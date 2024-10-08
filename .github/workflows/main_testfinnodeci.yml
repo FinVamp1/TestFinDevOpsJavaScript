@@ -34,10 +34,6 @@ jobs:
           npm run test --if-present
           popd
 
-      - name: Deploy to WebApp
-        id: deploy-to-webapp
-        run: echo "::set-output name=webapp-url::https://example.com"
-
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
@@ -47,6 +43,7 @@ jobs:
   deploy:
     runs-on: windows-latest
     needs: build
+    
     permissions:
       id-token: write #This is required for requesting the JWT
 
@@ -59,9 +56,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_34113293896E4D4DB92A5841A0781E56 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_83652CAB21C14583B9DCCAC71CBD3B7A }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_36C13410FB7A4F9BB97EBA23547242BA }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_88A8ACBB6F9D495598D989E237C538E7 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_7BAB789D4FCD402AA48BB770B7C2B82C }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_1822CC4783A547C9B60715A92D229D1C }}
 
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
